@@ -20,6 +20,8 @@ Route::group([
     });
 
     Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::resource('artist', 'ArtistController');
 });
 
 Auth::routes();
