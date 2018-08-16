@@ -15,4 +15,14 @@ class Artist extends Model
         'genre',
         'description',
     ];
+
+    public function albums()
+    {
+        return $this->hasMany(Album::class);
+    }
+
+    public function songs()
+    {
+        return $this->hasManyThrough(Song::class, Album::class);
+    }
 }

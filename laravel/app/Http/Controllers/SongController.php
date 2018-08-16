@@ -2,29 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Artist;
+use App\Song;
 use Illuminate\Http\Request;
-use Validator as ValidatorFacade;
-use Illuminate\Validation\Rule;
-use Illuminate\Validation\ValidationException;
-use View;
-// use App\Services\ArtistService;
 
-class ArtistController extends Controller
+class SongController extends Controller
 {
-    public $model = Artist::class;
+    public $model = Song::class;
 
     public function validationRules($id = null)
     {
         return [
-            'name' => [
-                'required',
-                Rule::unique('artists')->ignore($id),
-                'max:255',
-            ],
-            'image' => 'nullable|image',
-            'genre' => 'nullable|max:255',
-            'description' => 'nullable',
+            'name' => 'required|max:255',
+            'composer' => 'nullablemax:255',
+            'duration' => 'nullable|numeric|lt:3000',
+            'order_number' => 'nullable|numeric|lt:30',
         ];
     }
 
@@ -36,7 +27,13 @@ class ArtistController extends Controller
     public function baseValidate(array $baseData, $validationRules = null, $validationMessages = null, $id = null)
     {
         $validator = ValidatorFacade::make(
-            $baseData,
+            array_merge(
+                $baseData,
+                [
+                    '3000' => 3000,
+                    '30' => 30,
+                ]
+            ),
             $validationRules ?? $this->validationRules($id),
             $validationMessages ?? $this->validationMessages()
         );
@@ -91,8 +88,8 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        $artists = $this->baseIndex();
-        return View::make('artists.index')->with('artists', $artists);
+        $songs = $this->baseIndex();
+        return View::make('songs.index')->with('songs', $songs);
     }
 
     /**
@@ -102,7 +99,8 @@ class ArtistController extends Controller
      */
     public function create()
     {
-        return View::make('artists.form');
+
+        return View::make('songs.form');
     }
 
     /**
@@ -113,59 +111,59 @@ class ArtistController extends Controller
      */
     public function store(Request $request)
     {
-        $artist = $this->baseCreate($request->all());
-        return View::make('artists.view')->with('artist', $artist);
+        $song = $this->baseCreate($request->all());
+        return View::make('songs.view')->with('song', $song);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Artist  $artist
+     * @param  \App\Song  $song
      * @return \Illuminate\Http\Response
      */
-    public function show(Artist $artist)
+    public function show(Song $song)
     {
-        $id = $artist->id;
-        $artist = $artist ?? $this->baseFind($id);
-        return View::make('artists.view')->with('artist', $artist);
+        $id = $song->id;
+        $song = $song ?? $this->baseFind($id);
+        return View::make('songs.view')->with('song', $song);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Artist  $artist
+     * @param  \App\Song  $song
      * @return \Illuminate\Http\Response
      */
-    public function edit(Artist $artist)
+    public function edit(Song $song)
     {
-        $id = $artist->id;
-        $artist = $artist ?? $this->baseFind($id);
-        return View::make('artists.form')->with('artist', $artist);
+        $id = $song->id;
+        $song = $song ?? $this->baseFind($id);
+        return View::make('songs.form')->with('song', $song);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Artist  $artist
+     * @param  \App\Song  $song
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Artist $artist)
+    public function update(Request $request, Song $song)
     {
-        $id = $artist->id;
-        $artist = $this->baseUpdate($request->all(), $id);
-        return View::make('artists.view')->with('artist', $artist);
+        $id = $song->id;
+        $song = $this->baseUpdate($request->all(), $id);
+        return View::make('songs.view')->with('song', $song);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Artist  $artist
+     * @param  \App\Song  $song
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Artist $artist)
+    public function destroy(Song $song)
     {
-        $id = $artist->id;
+        $id = $song->id;
         $this->baseDestroy($id);
         return $this->index();
     }

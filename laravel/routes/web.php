@@ -22,6 +22,8 @@ Route::group([
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::resource('artist', 'ArtistController');
+    Route::resource('album', 'AlbumController');
+    Route::resource('somg', 'SomgController');
 });
 
 Auth::routes();

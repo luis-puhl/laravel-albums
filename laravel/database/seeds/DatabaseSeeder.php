@@ -12,6 +12,17 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         factory(App\User::class, 5)->create();
-        factory(App\Artist::class, 5)->create();
+        $artists = factory(App\Artist::class, 5)->create();
+        $artists->each(function ($artist) {
+            $artist->albums()->saveMany(
+                factory(App\Album::class, 2)->make()
+            );
+         })->each(function ($artist) {
+            $artist->albums()->each(function ($album) {
+                $album->songs()->saveMany(
+                    factory(App\Song::class, 10)->make()
+                );
+             });
+         });
     }
 }

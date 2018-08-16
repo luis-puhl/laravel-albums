@@ -2,29 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Artist;
+use App\Album;
 use Illuminate\Http\Request;
-use Validator as ValidatorFacade;
-use Illuminate\Validation\Rule;
-use Illuminate\Validation\ValidationException;
-use View;
-// use App\Services\ArtistService;
 
-class ArtistController extends Controller
+class AlbumController extends Controller
 {
-    public $model = Artist::class;
+    public $model = Album::class;
 
     public function validationRules($id = null)
     {
         return [
-            'name' => [
-                'required',
-                Rule::unique('artists')->ignore($id),
-                'max:255',
-            ],
-            'image' => 'nullable|image',
-            'genre' => 'nullable|max:255',
-            'description' => 'nullable',
+            'name' => 'required|max:255',
+            'released_at' => 'nullable|before_or_equal:now',
+            'cover_photo' => 'nullable|image',
         ];
     }
 
@@ -91,8 +81,8 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        $artists = $this->baseIndex();
-        return View::make('artists.index')->with('artists', $artists);
+        $albums = $this->baseIndex();
+        return View::make('albums.index')->with('albums', $albums);
     }
 
     /**
@@ -102,8 +92,9 @@ class ArtistController extends Controller
      */
     public function create()
     {
-        return View::make('artists.form');
+        return View::make('albums.form');
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -113,59 +104,59 @@ class ArtistController extends Controller
      */
     public function store(Request $request)
     {
-        $artist = $this->baseCreate($request->all());
-        return View::make('artists.view')->with('artist', $artist);
+        $album = $this->baseCreate($request->all());
+        return View::make('albums.view')->with('album', $album);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Artist  $artist
+     * @param  \App\Album  $album
      * @return \Illuminate\Http\Response
      */
-    public function show(Artist $artist)
+    public function show(Album $album)
     {
-        $id = $artist->id;
-        $artist = $artist ?? $this->baseFind($id);
-        return View::make('artists.view')->with('artist', $artist);
+        $id = $album->id;
+        $album = $album ?? $this->baseFind($id);
+        return View::make('albums.view')->with('album', $album);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Artist  $artist
+     * @param  \App\Album  $album
      * @return \Illuminate\Http\Response
      */
-    public function edit(Artist $artist)
+    public function edit(Album $album)
     {
-        $id = $artist->id;
-        $artist = $artist ?? $this->baseFind($id);
-        return View::make('artists.form')->with('artist', $artist);
+           $id = $album->id;
+        $album = $album ?? $this->baseFind($id);
+        return View::make('albums.form')->with('album', $album);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Artist  $artist
+     * @param  \App\Album  $album
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Artist $artist)
+    public function update(Request $request, Album $album)
     {
-        $id = $artist->id;
-        $artist = $this->baseUpdate($request->all(), $id);
-        return View::make('artists.view')->with('artist', $artist);
+        $id = $album->id;
+        $album = $this->baseUpdate($request->all(), $id);
+        return View::make('albums.view')->with('album', $album);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Artist  $artist
+     * @param  \App\Album  $album
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Artist $artist)
+    public function destroy(Album $album)
     {
-        $id = $artist->id;
+        $id = $album->id;
         $this->baseDestroy($id);
         return $this->index();
     }
