@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <section class="content-header">
                 @empty($song)
                     <h1>@lang('New song')</h1>
@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             @empty($song)
                 {!! Form::open(['route' => 'song.store', 'files' => true]) !!}
 

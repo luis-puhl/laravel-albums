@@ -15,7 +15,7 @@
             </div>
             <div class="col-md-10">
                 <h1>{{ $album->name }}</h1>
-                <a href="{{ action('albumController@edit', ['album' => $album]) }}">
+                <a href="{{ action('AlbumController@edit', ['album' => $album]) }}">
                     Edit
                 </a>
             </div>

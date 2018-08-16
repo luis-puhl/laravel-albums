@@ -1,6 +1,6 @@
 <div class="form-row">
     <div class="col-md-1">
-        {!! Form::label('order_number', __('order_number').':') !!}
+        {!! Form::label('order_number', __('#').':') !!}
         {!! Form::number('order_number', null, ['class' => 'form-control']) !!}
     </div>
     <div class="col-md-4">

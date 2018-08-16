@@ -15,7 +15,7 @@
             </div>
             <div class="col-md-10">
                 <h1>{{ $song->name }}</h1>
-                <a href="{{ action('songController@edit', ['song' => $song]) }}">
+                <a href="{{ action('SongController@edit', ['song' => $song]) }}">
                     Edit
                 </a>
             </div>

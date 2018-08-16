@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Album;
 use Illuminate\Http\Request;
+use Validator as ValidatorFacade;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
+use View;
 
 class AlbumController extends Controller
 {

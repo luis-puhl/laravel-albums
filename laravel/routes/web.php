@@ -23,7 +23,7 @@ Route::group([
 
     Route::resource('artist', 'ArtistController');
     Route::resource('album', 'AlbumController');
-    Route::resource('somg', 'SomgController');
+    Route::resource('song', 'SongController');
 });
 
 Auth::routes();
