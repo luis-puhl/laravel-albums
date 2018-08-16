@@ -1,0 +1,19 @@
+{
+    "add": "Adicionar",
+    "name": "Nome",
+    "image": "Imagem",
+    "genre": "Gênero",
+    "description": "Descrição",
+    "actions": "Ações",
+    "Dashboard": "Painel",
+    "artists": "Artistas",
+    "users": "Usuários",
+    "email": "E-mail",
+    "created_at": "Criado em",
+    "updated_at": "Ultima atualização",
+    "Documentation": "Documentação",
+    "News": "Notícias",
+    "Home": "Início",
+    "Register": "Registrar",
+    "You are logged in!": "Você está autenticado!"
+}
