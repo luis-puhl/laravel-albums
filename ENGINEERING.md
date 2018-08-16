@@ -2,6 +2,58 @@ ENGINEERING
 ===========
 This is an stack file, append here at the top.
 
+# Sprint 3: Homerun
+
+## Tech Stack
+
+| Done | Task |
+| -    |-----------------|
+| yes  | Docker, Docker-compose |
+| yes  | PHP, Laravel Framework 5.6 |
+| yes  | PostgreSQL or MySQL |
+| +/-  | Bootstrap front-end framework or Material Design |
+| no   | Ajax |
+| yes  | CSS3 using Sass |
+| no   | Javascript |
+| yes  | Translation keys |
+| no   | Unit tests |
+
+## [How to Deploy](README.md#Deploy)
+
+
+## Entities
+
+| Done | Entity   | Property |
+| ---- | -------- |------- |
+|      | Artist   |  |
+| yes  |          | Name
+| +/-  |          | Image
+| yes  |          | Genre
+| yes  |          | Description
+|      | Album    |  |
+| +/-  |          | Cover photo
+| yes  |          | Name
+| yes  |          | Year
+|      | Song     |  |
+| yes  |          | Name
+| yes  |          | Duration
+| yes  |          | Composer
+| yes  |          | Order number
+|      | User     |  |
+| yes  |          | Name
+| yes  |          | Email address
+| no   |          | Image
+| yes  |          | Password
+| no   |          | Admin permissions
+
+
+## Authentication (AuthN) and Authorization (AuthZ)
+
+Authentication is working, but it is not useful.
+
+Authorization is not implemented.
+
+
 # Sprint 2: Narrowing Docker config and make database work
 
 After some pain, finally a `docker-compose.yml` and aditional config files are working.
