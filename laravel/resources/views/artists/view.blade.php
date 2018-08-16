@@ -16,7 +16,7 @@
             <div class="col-md-10">
                 <h1>{{ $artist->name }}</h1>
                 <a href="{{ action('ArtistController@edit', ['artist' => $artist]) }}">
-                    Edit
+                    @lang('Edit')
                 </a>
             </div>
         </div>
@@ -36,18 +36,21 @@
             <div class="col-md-12">
                 <div class="albums">
                     <ul class="list-group">
-                        {{-- @forelse($artist['albums'] as $key => $album) --}}
+                        @forelse($artist->albums as $key => $album)
                             <li class="list-group-item">
-                                <strong>
-                                data{{-- {{ $album->created_at->diffForHumans()}} --}}: &nbsp;
-                                </strong>
-                                album{{-- {{ $album->body }} --}}
+                                <a href="{{ action('AlbumController@show', ['album' => $album]) }}">
+                                    <strong>
+                                        {{ $album->released_at->year }}: &nbsp;
+                                    </strong>
+                                    {{ $album->name }}
+                                    ({{ $album->songs()->count() }})
+                                </a>
                             </li>
-                        {{-- @empty --}}
+                        @empty
                             <li class="list-group-item">
                                 <p>@lang('No Albums for this Artist.')</p>
                             </li>
-                        {{-- @endforelse --}}
+                        @endforelse
                     </ul>
                 </div>
             </div>

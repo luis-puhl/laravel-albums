@@ -16,6 +16,10 @@ class Album extends Model
         'released_at',
     ];
 
+    protected $dates = [
+        'released_at',
+    ];
+
     protected $appends = [
         'year',
     ];

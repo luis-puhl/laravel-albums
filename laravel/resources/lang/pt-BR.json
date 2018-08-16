@@ -16,6 +16,8 @@
     "Composer": "Compositor",
     "duration": "Duração (s)",
     "Duration": "Duração (s)",
+    "edit": "Editar",
+    "Edit": "Editar",
     "users": "Usuários",
     "email": "E-mail",
     "created_at": "Criado em",
@@ -24,5 +26,7 @@
     "News": "Notícias",
     "Home": "Início",
     "Register": "Registrar",
+    "Songs in this Album": "Músicas nesse Album",
+    "No Songs for this Album.": "Nenhuma Música nesse Album",
     "You are logged in!": "Você está autenticado!"
 }
