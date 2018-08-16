@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
         config([
             'laravellocalization.supportedLocales' => [
                 'en'    => ['name' => 'English', 'script' => 'Latn', 'native' => 'English'],
-                'pt-BR' => ['name' => 'Brazilian Portuguese', 'script' => 'Latn', 'native' => 'português do Brasil', 'regional' => 'pt_BR'],
+                'pt-BR' => ['name' => 'Brazilian Portuguese', 'script' => 'Latn', 'native' => 'Português do Brasil', 'regional' => 'pt_BR'],
             ],
 
             'laravellocalization.useAcceptLanguageHeader' => true,
